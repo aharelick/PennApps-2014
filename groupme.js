@@ -80,18 +80,20 @@ router.post('/send', function(req, res) {
   return res.json(null); 
 });
 
-router.post('messages', function(req, res) {
-  var group_id = req.body.group_id;
+router.get('/messages', function(req, res) {
+  var group_id = req.query.group_id;
   //var last_message = req.body.last_message;
+  console.log(group_id);
   request.get({
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&limit=100",
-  }, function(err, response, body) {});
-  var data = (JSON.parse(body)).response;
-  sendData = [];
-  for (var i in data.messages) {
-    sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].name});
-  }  
-  return res.json(sendData); 
+  }, function(err, response, body) {
+    var data = (JSON.parse(body)).response;
+    sendData = [];
+    for (var i in data.messages) {
+      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text});
+    }  
+    return res.json(sendData); 
+  });
 });
 
 module.exports = router;

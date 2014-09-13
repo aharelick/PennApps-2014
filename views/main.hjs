@@ -55,8 +55,8 @@
     var id = activeGroup;
     var data = {group_id: id};
     $.ajax({
-      type: "POST",
-      url: 'http://localhost:3000/groupme/messages/',
+      type: "GET",
+      url: 'http://localhost:3000/groupme/messages',
       data: data
     });
 
