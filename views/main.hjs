@@ -46,6 +46,11 @@
                 <!--Body content of Open Message-->
 
                 <h3>Active Conversation</h3>
+                <form>
+                  <input type="text" placeholder="Enter a message">
+                  <button class="btn" type="submit">Send</button>
+                </form>
+
             </div>
 
             <div class="col-md-4">
