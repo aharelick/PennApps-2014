@@ -48,19 +48,21 @@
     });
     console.log('it happened');
     $("#messageContent").val("");
+    retrieveMessages();
     return false;
   }
 
   function retrieveMessages() {
     var id = activeGroup;
     var data = {group_id: id};
-    $.ajax({
-      type: "GET",
-      url: 'http://localhost:3000/groupme/messages',
-      data: data
+    $.get('http://localhost:3000/groupme/messages?group_id=' + id, function(response) {
+      console.log(response);
+      var htmlOut = "";
+      for (var i = 0; i < response.length; i++) {
+        htmlOut += "<div class = 'one_message'> <strong>" + response[i].name + ": </strong>" + response[i].text + "</div>";
+      }
+      $("#lots_of_messages").html(htmlOut);
     });
-
-    console.log('we made it');
     return false;
   }
 </script>
@@ -92,6 +94,7 @@
                 <h3>Active Conversation</h3>
                 <input id="messageContent" type="text" placeholder="Enter a message">
                 <button id="send-message" class="btn" type="button" onclick="sendMessage()">Send</button>
+                <div id="lots_of_messages"></div>
 
             </div>
 
