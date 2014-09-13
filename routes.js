@@ -12,6 +12,10 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/main/', function(req, res) {
+  return res.render('main');
+});
+
 router.get('/db', function(req, res) {
   req.db.collection('test').find().toArray(function(err, items) {
     return res.send(items);
