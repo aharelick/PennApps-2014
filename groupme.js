@@ -90,7 +90,7 @@ router.get('/messages', function(req, res) {
     var data = (JSON.parse(body)).response;
     sendData = [];
     for (var i in data.messages) {
-      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text});
+      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text, 'pic': data.messages[i].avatar_url});
     }  
     return res.json(sendData); 
   });
