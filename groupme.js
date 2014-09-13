@@ -80,10 +80,10 @@ router.post('/send', function(req, res) {
   return res.json(null); 
 });
 
-router.get('messages', function(req, res) {
+router.post('messages', function(req, res) {
   var group_id = req.body.group_id;
   //var last_message = req.body.last_message;
-  request.post({
+  request.get({
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&limit=100",
   }, function(err, response, body) {});
   var data = (JSON.parse(body)).response;

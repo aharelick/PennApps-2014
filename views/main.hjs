@@ -30,6 +30,7 @@
   function makeActive(i) {
     activeGroup = i;
     console.log(activeGroup);
+    retrieveMessages();
   }
 
   function checkActive() {
@@ -49,13 +50,26 @@
     $("#messageContent").val("");
     return false;
   }
+
+  function retrieveMessages() {
+    var id = activeGroup;
+    var data = {group_id: id};
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/groupme/messages/',
+      data: data
+    });
+
+    console.log('we made it');
+    return false;
+  }
 </script>
 
 </head>
 
 <body>
     <div class= "page-header" id="titleBar">
-      <h1> The name of our website. </h1>
+      <h1>Codename: KND</h1>
     </div>
     <div class="container-fluid">
         <div class="row-fluid">
@@ -84,7 +98,7 @@
             <div class="col-md-3" id="metricsPane">
                 <!--Metrics and search engine-->
 
-                <h3>Metrics</h3>
+                <h3>Search</h3>
 
                 <form class="form-search">
                     <input class="input-medium search-query" type="text">
