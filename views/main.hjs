@@ -30,9 +30,11 @@
       }
 
       .conversationBox {
-      	width: 100px;
+      	width: 250px;
+      	content: This is a conversation.;
+        background-color: #F0F8FF;
       	padding: 5px ;
-      	border: 5px solid navy;
+      	border: 2px solid navy;
       	margin: 15px;
       }
 
