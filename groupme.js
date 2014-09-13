@@ -69,11 +69,7 @@ function createMessageJSON(message) {
 }
 router.post('/send', function(req, res) {
   var message = req.body.message;
-  //var message = 'finally making some progress, whatup -sent from my sublime text';
   var group_id = req.body.group_id;
-  //var group_id = "10024104";
-  console.log(createMessageJSON(message));
-  console.log(apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token);
   request.post({
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token,
     headers: {
@@ -82,6 +78,20 @@ router.post('/send', function(req, res) {
     body: createMessageJSON(message)
   }, function(err, response, body) {});
   return res.json(null); 
+});
+
+router.get('messages', function(req, res) {
+  var group_id = req.body.group_id;
+  //var last_message = req.body.last_message;
+  request.post({
+    url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&limit=100",
+  }, function(err, response, body) {});
+  var data = (JSON.parse(body)).response;
+  sendData = [];
+  for (var i in data.messages) {
+    sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].name});
+  }  
+  return res.json(sendData); 
 });
 
 module.exports = router;
