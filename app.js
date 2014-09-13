@@ -41,6 +41,9 @@ app.use(function(req, res, next) {
 var venmo = require('./venmo');
 app.use('/venmo', venmo);
 
+var groupme = require('./groupme');
+app.use('/groupme', groupme);
+
 var routes = require('./routes');
 app.use('/', routes);
 
