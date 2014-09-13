@@ -40,9 +40,9 @@ router.get('/groups', function(req, res) {
       groups.push({'conversationName' : data[i].name});
     }  
     console.log(groups);
-    return res.render('main', {
+    /*return res.render('main', {
       groups: groups
-    });
+    });  */
     /*req.db.collection('payments').insert({
       amount: amount,
       phone: phone,
@@ -52,6 +52,7 @@ router.get('/groups', function(req, res) {
     }, function(err, result) {
       req.session.message = 'Sent $' + amount + ' to ' + recipient + ' successfully!';
     }); */
+  return res.json(groups);
   });
 });
 
