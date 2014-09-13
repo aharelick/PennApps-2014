@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
 
 <script type="text/javascript">
+
+  var activeGroup;
+
   function retrieveGroups() {
     $.getJSON('/groupme/groups', function(elements) {
       console.log(elements);
@@ -14,7 +17,7 @@
       if (elements != undefined) {
         var htmlOut = "";
         for (var i=0; i<elements.length; i++) {
-          htmlOut += "<div class='conversationBox' id='" + elements[i].id + "'>" + elements[i].conversationName + "</div>";
+          htmlOut += "<div class='conversationBox' id='" + elements[i].id + "' onClick='makeActive(" + i + ")'>" + elements[i].conversationName + "</div>";
         }
         $("#content").html(htmlOut);
       } else {
@@ -22,6 +25,21 @@
         $("#content").html(htmlOut);
       }
     });
+  }
+
+  function makeActive(i) {
+    activeGroup = i;
+    console.log(activeGroup);
+  }
+
+  function checkActive() {
+    return activeGroup;
+  }
+
+  function sendMessage() {
+    var message = $("#messageContent").val();
+    var group_id = activeGroup;
+    return false;
   }
 </script>
 
@@ -34,20 +52,21 @@
                 <!--List of Messages-->
 
                 <h3>List of Conversations</h3>
-                
+                <center>
 
                 <form action="" method="" onSubmit="return false">
                   <input type="submit" value="Retrieve Groups" onClick="retrieveGroups()"><br>
                   <div id="content"></div>
                 </form>
+              </center>
             </div>
 
             <div class="col-md-5" id="currConversation">
                 <!--Body content of Open Message-->
 
                 <h3>Active Conversation</h3>
-                <form>
-                  <input type="text" placeholder="Enter a message">
+                <form onSubmit="return sendMessage()">
+                  <input id="messageContent" type="text" placeholder="Enter a message">
                   <button class="btn" type="submit">Send</button>
                 </form>
 
