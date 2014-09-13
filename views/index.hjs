@@ -28,12 +28,10 @@
       .form-signin .checkbox {
         margin-bottom: 10px;
       }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
+
+      .form-signin-heading2 {
+        font-size: 14px;
+        margin-bottom: 10px;
       }
 
     </style>
@@ -57,12 +55,8 @@
 
     <div class="container">
 
-      <form class="form-signin" method="post" action="https://oauth.groupme.com/oauth/authorize?client_id=JKhdNd1ChhWW53nawNG9pTkGQMrNIriAD6pWpLKSPY39EkoZ" >
-        <!--fix with the real link -->
-        <h2 class="form-signin-heading">{{title}}</h2>
-        <h3 class="form-signin-heading">Adding search to GroupMe</h3>
-        <button class="btn btn-large btn-primary" type="submit">Login via GroupMe</button>
-      </form>
+      <h1>{{title}}</h1>
+        <a href="http://localhost:3000/groupme/authorize"class="btn btn-large btn-primary" type="submit">Login via GroupMe</a>
 
     </div> <!-- /container -->
   </center>
