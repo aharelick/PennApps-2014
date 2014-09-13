@@ -24,17 +24,22 @@ body {
       margin-bottom: 10px;
     }
 
-
-
+/*the three main headers*/
+h3 {
+  text-align: center;
+}
 
 
 /*Left Pane of Main page: Groups List*/
 
 #groupsList {
-  
+
 }
- /*Retrieve Groups button */
+ /*Retrieve Groups 
+ button */
    input[type=submit] { 
+    text-align: center
+
 
    }
 
@@ -75,6 +80,9 @@ body {
     /*Third Pane: Metrics*/
 
     #metricsPane {
+      border-radius: 12px;
+      margin: 0px 5px 0px 5px; /*top right bottom left */
+      background-color: #8AC2B0;
 
 
     }
