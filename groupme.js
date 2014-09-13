@@ -35,9 +35,14 @@ router.get('/groups', function(req, res) {
     }
 
     var data = (JSON.parse(body)).response;
+    groups = [];
     for (var i in data) {
-      console.log(data[i].name);
+      groups.push({'conversationName' : data[i].name});
     }  
+    console.log(groups);
+    return res.render('main', {
+      groups: groups
+    });
     /*req.db.collection('payments').insert({
       amount: amount,
       phone: phone,
@@ -47,7 +52,6 @@ router.get('/groups', function(req, res) {
     }, function(err, result) {
       req.session.message = 'Sent $' + amount + ' to ' + recipient + ' successfully!';
     }); */
-      return res.redirect(base + 'main');
   });
 });
 
