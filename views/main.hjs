@@ -65,7 +65,7 @@
       console.log(response);
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
-        htmlOut += "<div class = 'one_message'> <strong>" + response[i].name + ": </strong>" + response[i].text + "</div>";
+        htmlOut += "<div class = 'one_message'> <img class='avatar' src='" + response[i].pic + "'> <strong>" + response[i].name + ": </strong>" + response[i].text + "</div>";
       }
       $("#lots_of_messages").html(htmlOut);
     });

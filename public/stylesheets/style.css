@@ -1,7 +1,5 @@
 
-.active {
-  background-color: #DDDDE0;
-}
+
 body {
       padding-top: 40px;
       padding-bottom: 40px;
@@ -51,12 +49,11 @@ h3 {
 
  /*Retrieve Groups button */
    input[type=submit] { 
-    text-align: center
-
+    text-align: center;
     background-color: #DDDDE0;
     border: #DDDDE0;
     border-radius: 15px;
-    padding: 5px 80px 5px; /*T R&L  B*/
+    padding: 5px 90px 5px; /*T R&L  B*/
 
 
    }
@@ -74,13 +71,13 @@ h3 {
       text-align: left;
 
     }
-
+    
     .conversationBox:hover {
-      background-color: #B1E0E0;
+      background-color: #DDDDE0;
     }
 
-    .conversationBox:active {
-      background-color: #FFFFFF;
+    .active {
+      background-color: #B1E0E0 ;
     }
 
     .form-signin-heading2 {
@@ -95,14 +92,22 @@ h3 {
       background-color: #B1E0E0;
     }
     #lots-of-messages {
-     padding: 2px 3px 2px;
+     padding: 2px 10px 2px;
     }
+
+
+    .avatar {
+      width: 38px;
+      height: auto;
+
+    }
+
 
     /*Third Pane: Metrics*/
     #metricsPane {
       border-radius: 0px 10px 10px 0px; /*TL TR BR BL*/
       margin: 0px 5px 0px 0px; /*top right bottom left */
-      background-color: #B1E0E0;
-
-
+      background-color: #FFFFFF;
     }
+
+
