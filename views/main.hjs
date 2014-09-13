@@ -14,7 +14,7 @@
       if (elements != undefined) {
         var htmlOut = "";
         for (var i=0; i<elements.length; i++) {
-          htmlOut += "<div class='conversationBox'>" + elements[i].conversationName + "</div>";
+          htmlOut += "<div class='conversationBox' id='" + elements[i].id + "'>" + elements[i].conversationName + "</div>";
         }
         $("#content").html(htmlOut);
       } else {
