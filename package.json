@@ -8,9 +8,10 @@
     "cookie-session": "~1.0.2",
     "express": "~4.8.6",
     "hjs": "~0.0.6",
-    "ejs": "*",
+    "ejs": "~1.0.0",
     "mongodb": "^1.4.10",
     "morgan": "~1.2.3",
-    "request": "^2.42.0"
+    "request": "^2.42.0",
+    "node-uuid": "~1.4.1"
   }
 }
