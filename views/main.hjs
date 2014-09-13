@@ -2,14 +2,29 @@
 
 <html lang="en">
 <head>
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-
-    <![endif]-->
-    <link href=
+  <link href=
     "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+
+<script type="text/javascript">
+  function retrieveGroups() {
+    $.getJSON('/groupme/groups', function(elements) {
+      console.log(elements);
+      console.log(elements.length);
+      if (elements != undefined) {
+        var htmlOut = "";
+        for (var i=0; i<elements.length; i++) {
+          htmlOut += "<div class='conversationBox'>" + elements[i].conversationName + "</div>";
+        }
+        $("#content").html(htmlOut);
+      } else {
+        var htmlOut = "No conversations found."
+        $("#content").html(htmlOut);
+      }
+    });
+  }
+</script>
+
 </head>
 
 <body>
@@ -18,11 +33,13 @@
             <div class="col-md-4">
                 <!--List of Messages-->
 
-                <h3>List of Conversations</h3>{{#groups}}
+                <h3>List of Conversations</h3>
+                
 
-                <div class="conversationBox">
-                    {{conversationName}}
-                </div>{{/groups}}
+                <form action="" method="" onSubmit="return false">
+                  <input type="submit" value="Retrieve Groups" onClick="retrieveGroups()"><br>
+                  <div id="content"></div>
+                </form>
             </div>
 
             <div class="col-md-4">
@@ -34,7 +51,7 @@
             <div class="col-md-4">
                 <!--Metrics and search engine-->
 
-                <h3>~* Metrics *~</h3>
+                <h3>Metrics</h3>
 
                 <form class="form-search">
                     <input class="input-medium search-query" type="text">
@@ -46,5 +63,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </body>
 </html>
