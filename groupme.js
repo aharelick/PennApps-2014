@@ -68,10 +68,10 @@ function createMessageJSON(message) {
 
 }
 router.get('/send', function(req, res) {
-  //var message = req.body.message;
-  var message = 'finally making some progress, whatup -sent from my sublime text';
-  //var group_id = req.body.group_id;
-  var group_id = "10024104";
+  var message = req.body.message;
+  //var message = 'finally making some progress, whatup -sent from my sublime text';
+  var group_id = req.body.group_id;
+  //var group_id = "10024104";
   console.log(createMessageJSON(message));
   console.log(apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token);
   request.post({
