@@ -57,8 +57,8 @@ router.get('/groups', function(req, res) {
     }, function(err, result) {
       req.session.message = 'Sent $ successfully!';
     });  */
-  }); 
     return res.json(sendData); 
+  }); 
 });
 
 function createMessageJSON(message) {
