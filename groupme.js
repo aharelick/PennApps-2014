@@ -29,14 +29,15 @@ router.get('/success', function(req, res) {
       console.log(err);
       return res.redirect('http://en.wikipedia.org/wiki/HTTP_404');
     }
-    console.log((JSON.parse(body)).response);
     req.session.groupme_id = ((JSON.parse(body)).response).id;
   });
-  console.log(req.session.groupme_id);
   return res.redirect(base + 'main');
 });
 
 router.get('/groups', function(req, res) {
+  if (!req.session.groupme_token) {
+    return res.json(null);
+  }
   request.get({
     url: apiEndpoint + '/groups' + '?token=' + req.session.groupme_token
   }, function(err, response, body) {
@@ -50,13 +51,13 @@ router.get('/groups', function(req, res) {
     for (var i in data) {
       sendData.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
     }  
-    req.db.collection('groups').insert({
-      users: ''
+   /* req.db.collection('groups').insert({
+      : ''
     }, function(err, result) {
       req.session.message = 'Sent $ successfully!';
-    });  
-  return res.json(sendData);
-  });
+    });  */
+  }); 
+    return res.json(sendData); 
 });
 
 router.get
