@@ -1,8 +1,8 @@
- 
+
 body {
       padding-top: 40px;
       padding-bottom: 40px;
-      background-color: #FFFFF7;
+      background-color: #DDDDE0;
     }
 
     .form-signin {
@@ -24,10 +24,10 @@ body {
       margin-bottom: 10px;
     }
 
+
 /*Single Main Header*/
 .page-header {
-  opacity: .50;
-  
+  opacity: .50;  
 }
 
 /*the three sub headers*/
@@ -39,19 +39,22 @@ h3 {
 /*Left Pane of Main page: Groups List*/
 
 #groupsList {
-    background-color: #F7CB99;
+    background-color: #FFFFFF;
     border-radius: 12px;
 }
 
  /*Retrieve Groups button */
    input[type=submit] { 
     text-align: center
+    background-color: #DDDDE0;
+    border: #DDDDE0;
+    border-radius: 12px;
+
    }
 
 
 /*The list of conversations*/
     .conversationBox {
-      background-color: #F7CB99;
       border-radius: 12px; 
       -moz-border-radius: 12px; 
       -webkit-border-radius: 12px; 
@@ -60,14 +63,16 @@ h3 {
       margin-right: 5px;
       margin-top: 10px;
       margin-bottom: 10px;
+      text-align: left;
+
     }
 
     .conversationBox:hover {
-      background-color: #F7B365;
+      background-color: #A6A6A8;
     }
 
     .conversationBox:active {
-    border: 1px solid #F7CB99;  
+    border: 1px solid #A6A6A8;  
     }
 
     .form-signin-heading2 {
@@ -79,7 +84,7 @@ h3 {
     #currConversation {
       border-radius: 12px;
       margin: 0px 5px 0px 5px; /*top right bottom left */
-      background-color: #D9F3CB;
+      background-color: #B1E0E0;
     }
 
     /*Third Pane: Metrics*/
