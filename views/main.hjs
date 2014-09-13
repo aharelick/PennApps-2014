@@ -17,7 +17,7 @@
       if (elements != undefined) {
         var htmlOut = "";
         for (var i=0; i<elements.length; i++) {
-          htmlOut += "<div class='conversationBox' id='" + elements[i].id + "' onClick='makeActive(" + i + ")'>" + elements[i].conversationName + "</div>";
+          htmlOut += "<div class='conversationBox' onClick='makeActive(" + elements[i].id + ")'>" + elements[i].conversationName + "</div>";
         }
         $("#content").html(htmlOut);
       } else {
@@ -42,12 +42,11 @@
     var data = {message: content, group_id: id};
     $.ajax({
       type: "POST",
-      url: '/groupme/send',
-      data: data,
-      success: success
+      url: 'http://localhost:3000/groupme/send/',
+      data: data
     });
     console.log('it happened');
-    $("#messageContent").val() = "";
+    $("#messageContent").val("");
     return false;
   }
 </script>
@@ -77,10 +76,8 @@
                 <!--Body content of Open Message-->
 
                 <h3>Active Conversation</h3>
-                <form onSubmit="return sendMessage()">
-                  <input id="messageContent" type="text" placeholder="Enter a message">
-                  <button class="btn" type="submit">Send</button>
-                </form>
+                <input id="messageContent" type="text" placeholder="Enter a message">
+                <button id="send-message" class="btn" type="button" onclick="sendMessage()">Send</button>
 
             </div>
 

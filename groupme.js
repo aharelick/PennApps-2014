@@ -67,7 +67,7 @@ function createMessageJSON(message) {
   return JSON.stringify(json);
 
 }
-router.get('/send', function(req, res) {
+router.post('/send', function(req, res) {
   var message = req.body.message;
   //var message = 'finally making some progress, whatup -sent from my sublime text';
   var group_id = req.body.group_id;
