@@ -35,7 +35,6 @@ router.get('/success', function(req, res) {
 });
 
 router.get('/groups', function(req, res) {
-  console.log(req.session.groupme_token);
   request.get({
     url: apiEndpoint + '/groups' + '?token=' + req.session.groupme_token
   }, function(err, response, body) {
@@ -47,15 +46,14 @@ router.get('/groups', function(req, res) {
     var data = (JSON.parse(body)).response;
     sendData = [];
     for (var i in data) {
-      groups.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
-
+      sendData.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
     }  
 
-    req.db.collection('groups').insert({
+    /*req.db.collection('groups').insert({
       users: amount
     }, function(err, result) {
-      req.session.message = 'Sent $' + amount + ' to ' + recipient + ' successfully!';
-    }); 
+      req.session.message = 'Sent $ successfully!';
+    });  */
   return res.json(sendData);
   });
 });
