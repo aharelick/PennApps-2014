@@ -90,7 +90,7 @@ router.get('/messages', function(req, res) {
     var data = (JSON.parse(body)).response;
     sendData = [];
     for (var i in data.messages) {
-      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text, 'pic': data.messages[i].avatar_url});
+      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text, 'pic': data.messages[i].avatar_url, like_count: (data.messages[i].favorited_by).length});
     }  
     return res.json(sendData); 
   });
