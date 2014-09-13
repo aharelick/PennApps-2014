@@ -6,7 +6,7 @@ var ObjectID = require('mongodb').ObjectID;
 router.get('/', function(req, res) {
   req.db.collection('notes').find().toArray(function(err, notes) {
     return res.render('index', {
-      title: 'Codeweekend Notes',
+      title: 'Codename: KND',
       notes: notes
     });
   });
