@@ -4,25 +4,23 @@
 		<body>
 		<div class="container-fluid">
 		  <div class="row-fluid">
-		    <div class="span2">
+		    <div class="span3">
 		      <!--List of Messages-->
-		      <body>
-		      </body>
+		
 		    </div>
-		    <div class="span10">
+		    <div class="span5">
 		      <!--Body content of Open Message-->
-		      <body>
-		      </body>
+		
 		    </div>
-		    <div class ="span3">
+		    <div class ="span4">
 		      <!--Metrics and search engine-->
-		      <body>
+		   
 		      
 		      <form class="form-search">
   <input type="text" class="input-medium search-query">
   <button type="submit" class="btn">Search</button>
 </form>
-</body>
+
 		    </div>
 		  </div>
 		</div>
