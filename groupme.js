@@ -1,5 +1,6 @@
 var request = require('request');
 var express = require('express');
+var nodeUuid = require("node-uuid");
 var router = express.Router();
 
 var base = 'http://localhost:3000/'
@@ -60,7 +61,28 @@ router.get('/groups', function(req, res) {
     return res.json(sendData); 
 });
 
-router.get
+function createMessageJSON(message) {
+  var uuid = nodeUuid.v1();
+  var json = {"message":{"source_guid": uuid,"text":message}};
+  return JSON.stringify(json);
+
+}
+router.get('/send', function(req, res) {
+  //var message = req.body.message;
+  var message = 'finally making some progress, whatup -sent from my sublime text';
+  //var group_id = req.body.group_id;
+  var group_id = "10024104";
+  console.log(createMessageJSON(message));
+  console.log(apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token);
+  request.post({
+    url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token,
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: createMessageJSON(message)
+  }, function(err, response, body) {});
+  return res.json(null); 
+});
 
 module.exports = router;
 
