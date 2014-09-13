@@ -17,7 +17,7 @@
       if (elements != undefined) {
         var htmlOut = "";
         for (var i=0; i<elements.length; i++) {
-          htmlOut += "<div class='conversationBox' onClick='makeActive(" + elements[i].id + ")'>" + elements[i].conversationName + "</div>";
+          htmlOut += "<div class='conversationBox' id='" + elements[i].id + "'onClick='makeActive(" + elements[i].id + ")'>" + elements[i].conversationName + "</div>";
         }
         $("#content").html(htmlOut);
       } else {
@@ -28,7 +28,9 @@
   }
 
   function makeActive(i) {
+    $('#' + activeGroup).removeClass('active');
     activeGroup = i;
+    $('#' + activeGroup).addClass('active');
     console.log(activeGroup);
     retrieveMessages();
   }
@@ -38,17 +40,21 @@
   }
 
   function sendMessage() {
-    var content = $("#messageContent").val();
-    var id = activeGroup; //fix this jawn
-    var data = {message: content, group_id: id};
-    $.ajax({
-      type: "POST",
-      url: 'http://localhost:3000/groupme/send/',
-      data: data
-    });
-    console.log('it happened');
-    $("#messageContent").val("");
-    retrieveMessages();
+    if (activeGroup != null) {
+      var content = $("#messageContent").val();
+      var id = activeGroup; //fix this jawn
+      var data = {message: content, group_id: id};
+      $.ajax({
+        type: "POST",
+        url: 'http://localhost:3000/groupme/send/',
+        data: data
+      });
+      console.log('it happened');
+      $("#messageContent").val("");
+      retrieveMessages();
+    } else {
+      console.log("Pick a conversation.");
+    }
     return false;
   }
 
