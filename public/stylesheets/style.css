@@ -94,7 +94,10 @@ h3 {
     #lots-of-messages {
      padding: 2px 10px 2px;
     }
+.one_message {
+       padding: 2px 10px 2px;
 
+}
 
     .avatar {
       width: 38px;
@@ -107,7 +110,7 @@ h3 {
     #metricsPane {
       border-radius: 0px 10px 10px 0px; /*TL TR BR BL*/
       margin: 0px 5px 0px 0px; /*top right bottom left */
-      background-color: #FFFFFF;
+      background-color: #B1E0E0;
     }
 
 
