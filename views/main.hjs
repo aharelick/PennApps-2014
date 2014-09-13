@@ -68,10 +68,11 @@
 		    <div class="span3">
 		      <!--List of Messages-->
 		       <h3>List of Conversations</h3>
-		       <div class = "conversationBox">
-				Sample text.
-		       </div>
-
+           {{#groups}}
+		          <div class = "conversationBox">
+				        {{conversationName}}
+		          </div>
+            {{/groups}}
 		    </div>
 
 		    <div class="span5">
