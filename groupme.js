@@ -22,6 +22,15 @@ router.get('/authorize', function(req, res) {
 
 router.get('/success', function(req, res) {
   req.session.groupme_token = req.query.access_token;
+  request.get({
+    url: apiEndpoint + '/users/me'
+  }, function(err, response, body) {
+    if (err) {
+      console.log(err);
+      return res.redirect('http://en.wikipedia.org/wiki/HTTP_404');
+    }
+    req.session.groupme_id = (JSON.parse(body)).response.id;
+  });
   return res.redirect(base + 'main');
 });
 
@@ -31,30 +40,27 @@ router.get('/groups', function(req, res) {
     url: apiEndpoint + '/groups' + '?token=' + req.session.groupme_token
   }, function(err, response, body) {
     if (err) {
+      console.log(err);
       return res.redirect('http://en.wikipedia.org/wiki/HTTP_404');
     }
 
     var data = (JSON.parse(body)).response;
-    groups = [];
+    sendData = [];
     for (var i in data) {
-      groups.push({'conversationName' : data[i].name});
+      groups.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
+
     }  
-    console.log(groups);
-    /*return res.render('main', {
-      groups: groups
-    });  */
-    /*req.db.collection('payments').insert({
-      amount: amount,
-      phone: phone,
-      note: note,
-      recipient: recipient,
-      date: Date.now()
+
+    req.db.collection('groups').insert({
+      users: amount
     }, function(err, result) {
       req.session.message = 'Sent $' + amount + ' to ' + recipient + ' successfully!';
-    }); */
-  return res.json(groups);
+    }); 
+  return res.json(sendData);
   });
 });
+
+router.get
 
 module.exports = router;
 

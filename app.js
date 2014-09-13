@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set up our database connection
 var Db = mongo.Db;
 var Server = mongo.Server;
-var db = new Db('messages',
+var db = new Db('groupme',
   new Server('localhost', '27017', {auto_reconnect: true}, {}),
   {safe: true}
 );
