@@ -6,16 +6,23 @@
 		  <div class="row-fluid">
 		    <div class="span2">
 		      <!--List of Messages-->
+		      <body>
+		      </body>
 		    </div>
 		    <div class="span10">
 		      <!--Body content of Open Message-->
+		      <body>
+		      </body>
 		    </div>
 		    <div class ="span3">
 		      <!--Metrics and search engine-->
+		      <body>
+		      
 		      <form class="form-search">
   <input type="text" class="input-medium search-query">
   <button type="submit" class="btn">Search</button>
 </form>
+</body>
 		    </div>
 		  </div>
 		</div>
