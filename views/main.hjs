@@ -30,7 +30,7 @@
 <body>
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="col-md-4">
+            <div class="col-md-3" id="groupsList">
                 <!--List of Messages-->
 
                 <h3>List of Conversations</h3>
@@ -42,7 +42,7 @@
                 </form>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5" id="currConversation">
                 <!--Body content of Open Message-->
 
                 <h3>Active Conversation</h3>
@@ -53,7 +53,7 @@
 
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3" id="metricsPane">
                 <!--Metrics and search engine-->
 
                 <h3>Metrics</h3>
