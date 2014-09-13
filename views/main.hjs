@@ -38,15 +38,16 @@
 
   function sendMessage() {
     var content = $("#messageContent").val();
-    var id = activeGroup;
+    var id = activeGroup; //fix this jawn
     var data = {message: content, group_id: id};
-    /*$.ajax({
+    $.ajax({
       type: "POST",
       url: '/groupme/send',
       data: data,
       success: success
     });
-    console.log('it happened');*/
+    console.log('it happened');
+    $("#messageContent").val() = "";
     return false;
   }
 </script>
