@@ -24,7 +24,13 @@ body {
       margin-bottom: 10px;
     }
 
-/*the three main headers*/
+/*Single Main Header*/
+.page-header {
+  opacity: .50;
+  
+}
+
+/*the three sub headers*/
 h3 {
   text-align: center;
 }
@@ -33,14 +39,13 @@ h3 {
 /*Left Pane of Main page: Groups List*/
 
 #groupsList {
-
+    background-color: #F7CB99;
+    border-radius: 12px;
 }
- /*Retrieve Groups 
- button */
+
+ /*Retrieve Groups button */
    input[type=submit] { 
     text-align: center
-
-
    }
 
 
