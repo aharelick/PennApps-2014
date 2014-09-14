@@ -89,7 +89,7 @@
   window.onload = function() {
     retrieveGroups();
     setTimeout(function(){retrieveMessages()}, 750);
-    setTimeout(function(){makeActive(activeGroup)}, 1250);
+    setTimeout(function(){$('#' + activeGroup).addClass('active');}, 1000);
   }
 
 </script>
