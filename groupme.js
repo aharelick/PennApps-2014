@@ -112,7 +112,7 @@ router.get('/moremessages', function(req, res) {
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100",
   }, function(err, response, body) {
     if (response.statusCode == 304) {
-      return res.json(null);
+      return res.json([]);
     }
     var data = (JSON.parse(body)).response;
     sendData = [];
