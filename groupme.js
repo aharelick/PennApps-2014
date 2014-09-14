@@ -138,7 +138,7 @@ router.get('/moremessages', function(req, res) {
 router.get('/search', function(req, res) {
   var param = req.query.param;
   var group_id = req.query.group_id;
-  console.log(db.groups.find({conversationName:{$regex : ".*" + param + ".*"}}));
+  return res.json(db.groups.find({conversationName:{$regex : ".*" + param + ".*"}}));
 });
 
 module.exports = router;
