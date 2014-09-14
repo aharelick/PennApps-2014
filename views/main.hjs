@@ -81,6 +81,7 @@
           console.log("Something went wrong with a message.");
         }
       }
+
       $("#lots_of_messages").html(htmlOut);
     });
     return false;
@@ -122,7 +123,9 @@
                 <input id="messageContent" type="text" placeholder="Enter a message">
                 <button id="send-message" class="btn" type="button" onclick="sendMessage()">Send</button>
                 <div id="lots_of_messages"></div>
-
+                <center>
+                <button id="load_more" class="btn" type="button" onclick="">Load More Messages</button>
+                </center>
             </div>
 
             <div class="col-md-3" id="metricsPane">
