@@ -106,17 +106,21 @@ h3 {
 
     }
 
-    .avatar {
+
+    .avatar-box { 
       float: left;
-      overflow: hidden;
-      height: 38px;
-      width: auto;
+      background: 50% 50% no-repeat; /* 50% 50% centers image in div */
+      width: 40px;
+      height: 40px;
       margin: 0px 5px 0px 0px; /*top right bottom left */
 
     }
 
-
-
+    .avatar{
+      display: block;
+      width: 40px;
+      height: 40pxpx;
+    }
     /*Third Pane: Metrics*/
     #metricsPane {
       border-radius: 0px 10px 10px 0px; /*TL TR BR BL*/
