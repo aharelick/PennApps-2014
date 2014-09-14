@@ -54,9 +54,6 @@ router.get('/groups', function(req, res) {
     for (var i in data) {
       sendData.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
     }  
-    /*req.db.collection('groups').insert(sendData, function(err, result) {
-      console.log("inserted successfully");
-    });  */
     return res.json(sendData); 
   }); 
 });
@@ -99,9 +96,11 @@ router.get('/messages', function(req, res) {
       var text = validator.escape(curr.text);
       json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
       sendData.push(json);
-      req.db.collection('messages').insert(json, function(err, result) {
-        //console.log("inserted messages successfully");
-      }); 
+      req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
+        if (err) {
+          return res.json({'err' : err});
+        }
+      });
     }  
     return res.json(sendData); 
   });
@@ -128,10 +127,12 @@ router.get('/moremessages', function(req, res) {
       var text = validator.escape(curr.text);
       json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
       sendData.push(json);
-      req.db.collection('messages').insert(json, function(err, result) {
-        //console.log("inserted messages successfully");
-      });  
-    } 
+      req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
+        if (err) {
+          return res.json({'err' : err});
+        }
+      });
+    }  
     return res.json(sendData); 
   });
 });
