@@ -121,7 +121,7 @@
     var param = $('#search_term').val();
     var group_id = activeGroup;
     console.log(param);
-    $.get('http://localhost:3000/groupme/messages?group_id=' + group_id + '&param=' + param, function(response) {
+    $.get('http://localhost:3000/groupme/search?group_id=' + group_id + '&param=' + param, function(response) {
       console.log(response);
     });
   }
