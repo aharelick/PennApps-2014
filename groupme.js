@@ -92,7 +92,7 @@ router.get('/messages', function(req, res) {
     for (var i in data.messages) {
       var curr = data.messages[i];
       var image = null;
-      if (curr.attachments.length != 0) {
+      if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
         image = curr.attachments[0].url;
       }
       sendData.push({'name' : curr.name, 'text': curr.text, 'pic': curr.avatar_url,
