@@ -139,9 +139,9 @@
   }
 
   function startDatabase() {
-    $.post('http://localhost:3000/groupme/loadAll?last_message=' + lastMessage, function(response) {
+   /* $.post('http://localhost:3000/groupme/loadAll?last_message=' + lastMessage, function(response) {
         console.log("made it " + response);
-    });
+    }); */
   }
 
   window.onload = function() {

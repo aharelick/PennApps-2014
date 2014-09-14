@@ -77,35 +77,7 @@ router.post('/send', function(req, res) {
   return res.json(null); 
 });
 
-router.get('/loadAll', function(req, res) {
-  var last_message = req.query.last_message;
-  request.get({
-      url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100",
-    }, function(err, response, body) {
-      console.log('received data');
-      if (response.statusCode == 304) {
-        return -1;
-      }
-      var last_id = 0;
-      var data = (JSON.parse(body)).response;
-      for (var i in data.messages) {
-        var curr = data.messages[i];
-        var image = null;
-        if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
-          image = curr.attachments[0].url;
-        }
-        // strip html tags maybe
-        var text = validator.escape(curr.text);
-        json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
-        last_id = json.message_id;
-        req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
-          if (err) {
-            //return res.json({'err' : err});
-          }
-        });
-      }  
-      return last_id; 
-    });
+
 
 router.get('/messages', function(req, res) {
   var group_id = req.query.group_id;
@@ -132,9 +104,9 @@ router.get('/messages', function(req, res) {
     } 
     var returnValue = data.messages[data.messages.length - 1].id;
     console.log(returnValue);
-    while (returnValue != -1) {
+    /*while (returnValue != -1) {
       setTimeout(function() {console.log('called load em all'); returnValue = loadEmAll(returnValue);}, 5000); 
-    }
+    } */
     return res.json(sendData);
   });
 });
