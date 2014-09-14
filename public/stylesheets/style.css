@@ -61,7 +61,6 @@ h3 {
 
 /*The list of conversations*/
     .conversationBox {
-      border-radius: 6px; 
       -moz-border-radius: 6px; 
       -webkit-border-radius: 6px; 
       border: 0px solid #B1E0E0;
@@ -77,7 +76,7 @@ h3 {
     }
 
     .active {
-      background-color: #B1E0E0 ;
+      background-color: #E1F5F5 ;
     }
 
     .form-signin-heading2 {
@@ -87,9 +86,9 @@ h3 {
     
     /*Second Pane: Messages Section*/
     #currConversation {
-      border-radius: 10px 0px 0px 10px; /*TL TR BR BL*/
+      border-radius: 10px 0px 0px 0px; /*TL TR BR BL*/
       margin: 0px 0px 0px 5px; /*top right bottom left */
-      background-color: #B1E0E0;
+      background-color: #E1F5F5;
     }
 
     #lots-of-messages {
@@ -102,7 +101,7 @@ h3 {
       border-radius: 6px; 
       -moz-border-radius: 6px; 
       -webkit-border-radius: 6px; 
-      border: 1px solid #9BC4C4;
+      border: 1px solid #E1F5F5;
 
     }
 
@@ -127,7 +126,7 @@ h3 {
     #metricsPane {
       border-radius: 0px 10px 10px 0px; /*TL TR BR BL*/
       margin: 0px 5px 0px 0px; /*top right bottom left */
-      background-color: #B1E0E0;
+      background-color: #E1F5F5;
     }
 
 
