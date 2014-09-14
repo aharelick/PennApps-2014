@@ -12,6 +12,7 @@
     "mongodb": "^1.4.10",
     "morgan": "~1.2.3",
     "request": "^2.42.0",
-    "node-uuid": "~1.4.1"
+    "node-uuid": "~1.4.1",
+    "validator": "3.18.0"
   }
 }

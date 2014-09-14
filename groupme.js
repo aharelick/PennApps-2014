@@ -1,6 +1,7 @@
 var request = require('request');
 var express = require('express');
 var nodeUuid = require("node-uuid");
+var validator = require("validator");
 var router = express.Router();
 
 var base = 'http://localhost:3000/'
@@ -95,7 +96,9 @@ router.get('/messages', function(req, res) {
       if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
         image = curr.attachments[0].url;
       }
-      sendData.push({'name' : curr.name, 'text': curr.text, 'pic': curr.avatar_url,
+      // strip html tags maybe
+      var text = validator.escape(curr.text);
+      sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
        like_count: (curr.favorited_by).length, image: image});
     }  
     return res.json(sendData); 
