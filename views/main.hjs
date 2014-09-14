@@ -86,7 +86,6 @@
       }
       $("#lots_of_messages").html(htmlOut);
     });
-    startDatabase();
     return false;
   }
 
@@ -136,12 +135,6 @@
         $('#searchResult').html(htmlOut);
       });
     }
-  }
-
-  function startDatabase() {
-   /* $.post('http://localhost:3000/groupme/loadAll?last_message=' + lastMessage, function(response) {
-        console.log("made it " + response);
-    }); */
   }
 
   window.onload = function() {
