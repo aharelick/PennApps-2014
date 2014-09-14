@@ -53,11 +53,9 @@ router.get('/groups', function(req, res) {
     for (var i in data) {
       sendData.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
     }  
-   /* req.db.collection('groups').insert({
-      : ''
-    }, function(err, result) {
-      req.session.message = 'Sent $ successfully!';
-    });  */
+    req.db.collection('groups').insert(sendData, function(err, result) {
+      console.log("inserted successfully");
+    });  
     return res.json(sendData); 
   }); 
 });
