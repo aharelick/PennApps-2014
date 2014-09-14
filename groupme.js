@@ -97,8 +97,11 @@ router.get('/messages', function(req, res) {
       // strip html tags maybe
       var text = validator.escape(curr.text);
       sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
-       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id});
+       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id});
     }  
+    req.db.collection('messages').insert(sendData, function(err, result) {
+      console.log("inserted successfully");
+    }); 
     return res.json(sendData); 
   });
 });
@@ -123,10 +126,19 @@ router.get('/moremessages', function(req, res) {
       // strip html tags maybe
       var text = validator.escape(curr.text);
       sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
-       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id});
-    }  
+       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id});
+    }
+    req.db.collection('messages').insert(sendData, function(err, result) {
+      console.log("inserted successfully");
+    });   
     return res.json(sendData); 
   });
+});
+
+router.get('/search', function(req, res) {
+  var param = req.query.param;
+  var group_id = req.query.group_id;
+  console.log(db.groups.find({conversationName:{$regex : ".*" + param + ".*"}}));
 });
 
 module.exports = router;
