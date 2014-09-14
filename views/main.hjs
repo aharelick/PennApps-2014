@@ -10,6 +10,7 @@
 
   var activeGroup;
   var lastMessage;
+  var alreadyLoaded;
 
   function retrieveGroups() {
     $.getJSON('/groupme/groups', function(elements) {
@@ -85,8 +86,20 @@
         }
       }
       $("#lots_of_messages").html(htmlOut);
+      startDatabase();
     });
     return false;
+  }
+
+  function startDatabase() {
+    var group_id = activeGroup;
+    if ($.inArray(group_id, alreadyLoaded) != -1) {
+      $.get('http://localhost:3000/groupme/load?group_id' + group_id, function(response) {
+        alreadyLoaded.push(group_id);
+      });
+    } else {
+      return;
+    }
   }
 
   function loadMore() {
@@ -138,6 +151,7 @@
   }
 
   window.onload = function() {
+    alreadyLoaded = [];
     retrieveGroups();
     setTimeout(function(){retrieveMessages()}, 750);
     setTimeout(function(){$('#' + activeGroup).addClass('active');}, 1000);
