@@ -98,7 +98,7 @@ router.get('/messages', function(req, res) {
       sendData.push(json);
       req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
         if (err) {
-          return res.json({'err' : err});
+          //return res.json({'err' : err});
         }
       });
     }  
@@ -129,7 +129,7 @@ router.get('/moremessages', function(req, res) {
       sendData.push(json);
       req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
         if (err) {
-          return res.json({'err' : err});
+          //return res.json({'err' : err});
         }
       });
     }  
