@@ -52,7 +52,7 @@
       });
       console.log('it happened');
       $("#messageContent").val("");
-      setTimeout(function(){retrieveMessages()}, 75);
+      setTimeout(function(){retrieveMessages()}, 100);
     } else {
       console.log("Pick a conversation.");
     }
