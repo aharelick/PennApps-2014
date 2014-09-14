@@ -12,7 +12,7 @@
 
     <div class="container">
 
-      <h1>Codename: KND</h1>
+      <h1>GroupMe+</h1>
         <a href="http://localhost:3000/groupme/authorize"class="btn btn-large btn-primary" type="submit">Login via GroupMe</a>
 
     </div> <!-- /container -->
