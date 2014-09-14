@@ -9,6 +9,7 @@
 <script type="text/javascript">
 
   var activeGroup;
+  var lastMessage;
 
   function retrieveGroups() {
     $.getJSON('/groupme/groups', function(elements) {
@@ -61,9 +62,9 @@
 
   function retrieveMessages() {
     var id = activeGroup;
-    var data = {group_id: id};
     $.get('http://localhost:3000/groupme/messages?group_id=' + id, function(response) {
       console.log(response);
+      lastMessage = response[response.length-1].id;
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
 
@@ -83,6 +84,34 @@
       }
 
       $("#lots_of_messages").html(htmlOut);
+    });
+    return false;
+  }
+
+  function loadMore() {
+    var group_id = activeGroup;
+    var last_message = lastMessage;
+    $.get('http://localhost:3000/groupme/moremessages?group_id=' + group_id + '&last_message=' + last_message, function(response) {
+      lastMessage = response[response.length-1].id;
+      var htmlOut = "";
+      for (var i = 0; i < response.length; i++) {
+
+        //Case 1: Just text
+        if (response[i].text != null && response[i].image == null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 2: Just image
+        } else if (response[i].text == null && response[i].image != null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong><br><a href='" + response[i].image + "'><img width='150px' height='auto' src='" + response[i].image + "'></a><br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 3: Image and text
+        } else if (response[i].text != null && response[i].image != null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><a href='" + response[i].image + "'><img width='150px' height='auto' src='" + response[i].image + "'></a><br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 4: Bad things happened.
+        } else {
+          console.log("Something went wrong with a message.");
+        }
+      }
+
+      $("#lots_of_messages").append(htmlOut);
     });
     return false;
   }
@@ -124,7 +153,7 @@
                 <button id="send-message" class="btn" type="button" onclick="sendMessage()">Send</button>
                 <div id="lots_of_messages"></div>
                 <center>
-                <button id="load_more" class="btn" type="button" onclick="">Load More Messages</button>
+                <button id="load_more" class="btn" type="button" onclick="loadMore()">Load More Messages</button>
                 </center>
             </div>
 
