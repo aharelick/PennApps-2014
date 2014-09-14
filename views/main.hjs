@@ -55,7 +55,7 @@
       });
       console.log('it happened');
       $("#messageContent").val("");
-      setTimeout(function(){retrieveMessages()}, 150);
+      setTimeout(function(){retrieveMessages()}, 500);
     } else {
       console.log("Pick a conversation.");
     }
@@ -84,9 +84,9 @@
           console.log("Something went wrong with a message.");
         }
       }
-
       $("#lots_of_messages").html(htmlOut);
     });
+    startDatabase();
     return false;
   }
 
@@ -136,6 +136,12 @@
         $('#searchResult').html(htmlOut);
       });
     }
+  }
+
+  function startDatabase() {
+    $.post('http://localhost:3000/groupme/loadAll?last_message=' + lastMessage, function(response) {
+        console.log("made it " + response);
+    });
   }
 
   window.onload = function() {
