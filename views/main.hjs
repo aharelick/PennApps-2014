@@ -30,6 +30,8 @@
   }
 
   function makeActive(i) {
+    $('#search_term').val("");
+    $('#searchResult').html("");
     $('#' + activeGroup).removeClass('active');
     activeGroup = i;
     $('#' + activeGroup).addClass('active');
@@ -119,19 +121,21 @@
 
   function updateSearch() {
     var param = $('#search_term').val();
-    var group_id = activeGroup;
-    console.log(param);
-    $.get('http://localhost:3000/groupme/search?group_id=' + group_id + '&param=' + param, function(response) {
-      var htmlOut = "";
-      for (var i = 0; i < response.length; i++) {
-        console.log($.parseJSON(response[i]).name);
-        if ($.parseJSON(response[i]).group_id == activeGroup) {
-          htmlOut += "<div class = 'one_result'> <div class='avatar-box'><img class='avatar' src='" + $.parseJSON(response[i]).pic + "'></div> <strong>" + $.parseJSON(response[i]).name + ": </strong>" + $.parseJSON(response[i]).text + "<br><div align='right'><em>" + $.parseJSON(response[i]).like_count + " favorites</em></div></div>";
+    if (param == "") {
+      $('#searchResult').html("");
+    } else {
+      var group_id = activeGroup;
+      console.log(param);
+      $.get('http://localhost:3000/groupme/search?group_id=' + group_id + '&param=' + param, function(response) {
+        var htmlOut = "";
+        for (var i = 0; i < response.length; i++) {
+          if (response[i].group_id == activeGroup) {
+            htmlOut += "<div class = 'one_result'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+          }
         }
-      }
-
-      $('#searchResult').html(htmlOut);
-    });
+        $('#searchResult').html(htmlOut);
+      });
+    }
   }
 
   window.onload = function() {
