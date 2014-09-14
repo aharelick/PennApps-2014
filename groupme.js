@@ -96,10 +96,10 @@ router.get('/messages', function(req, res) {
       }
       // strip html tags maybe
       var text = validator.escape(curr.text);
-      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id};
+      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
       sendData.push(json);
       req.db.collection('messages').insert(json, function(err, result) {
-        console.log("inserted messages successfully");
+        //console.log("inserted messages successfully");
       }); 
     }  
     return res.json(sendData); 
@@ -125,10 +125,10 @@ router.get('/moremessages', function(req, res) {
       }
       // strip html tags maybe
       var text = validator.escape(curr.text);
-      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id};
+      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
       sendData.push(json);
       req.db.collection('messages').insert(json, function(err, result) {
-        console.log("inserted messages successfully");
+        //console.log("inserted messages successfully");
       });  
     } 
     return res.json(sendData); 
@@ -138,8 +138,13 @@ router.get('/moremessages', function(req, res) {
 router.get('/search', function(req, res) {
   var param = req.query.param;
   var group_id = req.query.group_id;
-  console.log(req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}));
-  return res.json(null);
+  sendData = [];
+  req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}, function(err, cursor) {
+    cursor.each(function(err, item) {
+      sendData.push(item);
+    });
+  });
+  return res.json(sendData);
 });
 
 module.exports = router;
