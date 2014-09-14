@@ -143,7 +143,7 @@ router.get('/search', function(req, res) {
   sendData = [];
   req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}).toArray(function(err, items) {
     async.each(items, function(item, callback) {
-      sendData.push(JSON.stringify(item));
+      sendData.push(item);
       callback();
     }, function(err) {
           return res.json(sendData);
