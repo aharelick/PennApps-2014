@@ -90,7 +90,13 @@ router.get('/messages', function(req, res) {
     var data = (JSON.parse(body)).response;
     sendData = [];
     for (var i in data.messages) {
-      sendData.push({'name' : data.messages[i].name, 'text' : data.messages[i].text, 'pic': data.messages[i].avatar_url, like_count: (data.messages[i].favorited_by).length});
+      var curr = data.messages[i];
+      var image = null;
+      if (curr.attachments.length != 0) {
+        image = curr.attachments[0].url;
+      }
+      sendData.push({'name' : curr.name, 'text': curr.text, 'pic': curr.avatar_url,
+       like_count: (curr.favorited_by).length, image: image});
     }  
     return res.json(sendData); 
   });
