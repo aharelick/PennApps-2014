@@ -94,6 +94,9 @@ var promiseWhile = function(condition, action) {
 };
 
 router.get('/load', function(req, res) {
+   var last_message = req.query.last_message;
+   var group_id = req.query.group_id;
+   console.log('group_id=' + group_id + "  last=" + last_message);
    var done = true;
    promiseWhile(function() {
     // Condition for stopping
@@ -106,6 +109,7 @@ router.get('/load', function(req, res) {
           // returns a Promise.
           request.get({
             url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100",}, function(err, response, body) {
+              console.log("checked api");
             if (response.statusCode == 304) {
               done = false;
             } else {
