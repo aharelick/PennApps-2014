@@ -106,7 +106,7 @@
             <div class="col-md-3" id="groupsList">
                 <!--List of Messages-->
 
-                <h3>List of Conversations</h3>
+                <h3>Groups</h3>
                 <center>
 
                 <form action="" method="" onSubmit="return false">
@@ -119,7 +119,7 @@
             <div class="col-md-5" id="currConversation">
                 <!--Body content of Open Message-->
 
-                <h3>Active Conversation</h3>
+                <h3></h3>
                 <input id="messageContent" type="text" placeholder="Enter a message">
                 <button id="send-message" class="btn" type="button" onclick="sendMessage()">Send</button>
                 <div id="lots_of_messages"></div>
