@@ -86,22 +86,25 @@
         }
       }
       $("#lots_of_messages").html(htmlOut);
-      startDatabase();
-    });
+      var group_id = activeGroup;
+      var last_message = lastMessage;
+      if ($.inArray(group_id, alreadyLoaded) == -1) {
+        $.get('http://localhost:3000/groupme/load?group_id=' + group_id + '&last_message=' + last_message, function(response) {
+          alreadyLoaded.push(group_id);
+        });
+      };
     return false;
-  }
-
-  function startDatabase() {
+  });
+}
+  /*function startDatabase() {
     var group_id = activeGroup;
     var last_message = lastMessage;
     if ($.inArray(group_id, alreadyLoaded) != -1) {
       $.get('http://localhost:3000/groupme/load?group_id' + group_id + '&last_message=' + last_message, function(response) {
         alreadyLoaded.push(group_id);
       });
-    } else {
-      return;
     }
-  }
+  } */
 
   function loadMore() {
     var group_id = activeGroup;
