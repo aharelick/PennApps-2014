@@ -3,7 +3,9 @@ var express = require('express');
 var nodeUuid = require("node-uuid");
 var validator = require("validator");
 var async = require("async");
+var Promise = require('bluebird');
 var router = express.Router();
+
 
 var base = 'http://localhost:3000/'
 var clientId = 'SsOMWhuXnXPHdrOjD67FMyfOcBm2XumCBUUrC0n5btiSbTVt';
@@ -62,7 +64,6 @@ function createMessageJSON(message) {
   var uuid = nodeUuid.v1();
   var json = {"message":{"source_guid": uuid,"text":message}};
   return JSON.stringify(json);
-
 }
 router.post('/send', function(req, res) {
   var message = req.body.message;
@@ -77,7 +78,20 @@ router.post('/send', function(req, res) {
   return res.json(null); 
 });
 
-
+var promiseWhile = function(condition, action) {
+    var resolver = Promise.defer();
+ 
+    var loop = function() {
+        if (!condition()) return resolver.resolve();
+        return Promise.cast(action())
+            .then(loop)
+            .catch(resolver.reject);
+    };
+ 
+    process.nextTick(loop);
+ 
+    return resolver.promise;
+};
 
 router.get('/messages', function(req, res) {
   var group_id = req.query.group_id;
@@ -102,12 +116,48 @@ router.get('/messages', function(req, res) {
         }
       });
     } 
-    var returnValue = data.messages[data.messages.length - 1].id;
-    console.log(returnValue);
-    /*while (returnValue != -1) {
-      setTimeout(function() {console.log('called load em all'); returnValue = loadEmAll(returnValue);}, 5000); 
-    } */
-    return res.json(sendData);
+    var done = true;
+    var last_message = data.messages[data.messages.length - 1].id;
+    promiseWhile(function() {
+      // Condition for stopping
+      return done;
+    }, function() {
+    // Action to run, should return a promise
+    return new Promise(function(resolve, reject) {
+            // Arbitrary 250ms async method to simulate async process
+            // In real usage it could just be a normal async event that 
+            // returns a Promise.
+            request.get({
+              url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100",}, function(err, response, body) {
+              if (response.statusCode == 304) {
+                done = false;
+              } else {
+              var data = (JSON.parse(body)).response;
+              for (var i in data.messages) {
+                var curr = data.messages[i];
+                var image = null;
+                if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
+                  image = curr.attachments[0].url;
+                }
+                // strip html tags maybe
+                var text = validator.escape(curr.text);
+                json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
+                last_message = curr.id;
+                req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
+                  if (err) {
+                    //return res.json({'err' : err});
+                  }
+                });
+              }
+            }
+              resolve();   
+            }); 
+        });
+    }).then(function() {
+        // Notice we can chain it because it's a Promise, 
+        // this will run after completion of the promiseWhile Promise!
+      return res.json(sendData);
+    });
   });
 });
 
