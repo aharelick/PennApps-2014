@@ -160,13 +160,15 @@
 
             <div class="col-md-3" id="metricsPane">
                 <!--Metrics and search engine-->
-
-                <h3>Search</h3>
-
+                
                 <form class="form-search">
                     <input class="input-medium search-query" type="text">
                     <button class="btn" type="submit">Search</button>
                 </form>
+                <div id='searchPane'>
+                      <div id='searchResult'> <!--Can you load each result in here, please?--> </div>
+                </div>
+
             </div>
         </div>
     </div><br>

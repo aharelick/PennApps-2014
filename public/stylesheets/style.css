@@ -2,7 +2,7 @@
 
 body {
       padding-bottom: 40px;
-      background-color: #FCFCFC;
+      background-color: #FFFFFF;
     }
 
     .form-signin {
@@ -51,15 +51,15 @@ h3 {
     background-color: #91BBBB;
     border-radius: 15px;
     padding: 0px 5px 5px 5px; /*T R B L*/
+    margin-right: 10px;
 
 }
 
  /*Refresh Groups button */
    input[type=submit] { 
-    float: right;
     text-align: center;
-    background-color: #FCFCFC;
-    border: #FCFCFC;
+    background-color: #FFFFFF;
+    border: #FFFFFF;
     border-radius: 15px;
     padding: 5px 5px 5px; /*T R&L  B*/
     margin: 0px 5px 5px 0px; /*top right bottom left */
@@ -107,15 +107,15 @@ h3 {
     #currConversation input {
       width: 350px;
       height: 30px;
-      border-radius: 10px;
+      border-radius: 20px;
     }
 
     #currConversation button {
       border-radius: 40px;
-      background-color: #FFA84A;
+      background-color: #FFE3B7;
       border: 0px;
       height: 30px;
-      color: #FCFCFC;
+      color: #FFFFFF;
     }
 
 
@@ -129,7 +129,7 @@ h3 {
       border-radius: 5px; 
       -moz-border-radius: 10px; 
       -webkit-border-radius: 10px; 
-      background-color: #FCFCFC;
+      background-color: #FFFFFF;
 
     }
 
