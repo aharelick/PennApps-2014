@@ -98,8 +98,6 @@
       $.get('http://localhost:3000/groupme/load?group_id' + group_id + '&last_message=' + last_message, function(response) {
         alreadyLoaded.push(group_id);
       });
-    } else {
-      return;
     }
   }
 
