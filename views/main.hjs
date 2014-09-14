@@ -2,8 +2,7 @@
 
 <html lang="en">
 <head>
-  <link href=
-    "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
 
 <script type="text/javascript">
@@ -70,7 +69,10 @@
       lastMessage = response[response.length-1].message_id;
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
-
+        if (response[i].pic == null) {
+          // null response pic
+          response[i].pic = "https://d2xk3mdboeujlo.cloudfront.net/images/info.png"
+        }
         //Case 1: Just text
         if (response[i].text != null && response[i].image == null) {
           htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
@@ -96,15 +98,6 @@
     return false;
   });
 }
-  /*function startDatabase() {
-    var group_id = activeGroup;
-    var last_message = lastMessage;
-    if ($.inArray(group_id, alreadyLoaded) != -1) {
-      $.get('http://localhost:3000/groupme/load?group_id' + group_id + '&last_message=' + last_message, function(response) {
-        alreadyLoaded.push(group_id);
-      });
-    }
-  } */
 
   function loadMore() {
     var group_id = activeGroup;
@@ -114,7 +107,10 @@
       lastMessage = response[response.length-1].message_id;
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
-
+        if (response[i].pic == null) {
+          // null response pic
+          response[i].pic = "https://d2xk3mdboeujlo.cloudfront.net/images/info.png";
+        }
         //Case 1: Just text
         if (response[i].text != null && response[i].image == null) {
           htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
@@ -146,6 +142,10 @@
         var htmlOut = "";
         for (var i = 0; i < response.length; i++) {
           if (response[i].group_id == activeGroup) {
+            if (response[i].pic == null) {
+              // null response pic
+              response[i].pic = "https://d2xk3mdboeujlo.cloudfront.net/images/info.png";
+            }
             htmlOut += "<div class = 'one_result'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
           }
         }
