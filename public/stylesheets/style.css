@@ -51,6 +51,7 @@ h3 {
   color: white; 
   font-size: 30px;
   margin-top: 7px;
+  margin-left: 5px;
 }
 
 
@@ -112,13 +113,14 @@ h3 {
 
     /*Second Pane: Messages Section*/
     #currConversation {
-      border-radius: 15px 0px 0px 0px; /*TL TR BR BL*/
+      border-radius: 15px 0px 15px 15px; /*TL TR BR BL*/
       margin: 0px 0px 0px 5px; /*top right bottom left */
       background-color: #E1F5F5;
     }
 
     /*text input box*/
     #currConversation input {
+      padding-left: 10px;
       width: 85%;
       height: 30px;
       border-radius: 20px;
@@ -143,28 +145,36 @@ h3 {
       margin: 6px 5px 0px 2px; /*top right bottom left */
       border-radius: 3px; 
       background-color: #FFFFFF;
+      vertical-align: center;
 
     }
 
+    /*Users Profile Picture*/
     .avatar-box { 
       float: left;
-      background: 50% 50% no-repeat; /* 50% 50% centers image in div */
       width: 40px;
       height: 40px;
-      margin: 0px 5px 0px 0px; /*top right bottom left */
-      overflow: hidden;
+      overflow: auto;
+      vertical-align: center;
 
     }
 
     .avatar{
-      display: block;
-      width: 40px;
-      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 3px;
+      max-width: 38px;
+      min-width: 38px;
+
+      vertical-align: center;
     }
+
+
     #load_more{
       background-color: #E1F5F5;
       color: #FF811F;
     }
+
 
     /*Third Pane: Metrics*/
     #metricsPane {
@@ -184,19 +194,12 @@ h3 {
 
    /*Search Bar*/
    #metricsPane .input-medium {
-      width: 70%;
+      margin-left: 10px;
+      padding-left: 10px;
+      width: 90%;
       height: 30px;
       border-radius: 20px;
     }
-
-  /*Search click button*/
-   #metricsPane .btn {
-      border-radius: 40px;
-      background-color: #FFFFFF;
-      border: 0px;
-      height: 30px;
-      color: #FFFFFF;
-   } 
 
 
 #searchPane {
