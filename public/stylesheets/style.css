@@ -31,13 +31,15 @@ body {
 }
 
 h1 {
-  color: #ff814A;
-  padding-left: 5px;
+  background-color: #FF811F;
+  color: #FFFFFF;
+  padding: 30px 5px 10px 15px;
   font-size: 38px;
-
+  margin-left: -10px;
 }
 /*the three sub headers*/
 h3 {
+  float: left;
   text-align: left;
   color: white; 
   font-size: 30px;
@@ -52,18 +54,23 @@ h3 {
     border-radius: 15px;
     padding: 0px 5px 5px 5px; /*T R B L*/
     margin-right: 10px;
+}
 
+#groupsList #content {
+  padding: 20px 0px 10px 0px; 
 }
 
  /*Refresh Groups button */
    input[type=submit] { 
+    float: right;
     text-align: center;
     background-color: #FFFFFF;
     border: #FFFFFF;
     border-radius: 15px;
-    padding: 5px 5px 5px; /*T R&L  B*/
-    margin: 0px 5px 5px 0px; /*top right bottom left */
+    padding: 0px 5px 0px; /*T R&L  B*/
+    margin: 20px 5px 5px 0px; /*top right bottom left */
     width: 57px;
+    color: #91BBBB;
    }
 
 
@@ -105,14 +112,15 @@ h3 {
 
     /*text input box*/
     #currConversation input {
-      width: 350px;
+      width: 85%;
       height: 30px;
       border-radius: 20px;
+      margin-top: 10px;
     }
 
-    #currConversation button {
+    #send-message {
       border-radius: 40px;
-      background-color: #FFE3B7;
+      background-color: #FF811F;
       border: 0px;
       height: 30px;
       color: #FFFFFF;
@@ -125,10 +133,8 @@ h3 {
 
     .one_message {
       padding: 2px 10px 2px;
-      margin: 6px 5px 0px 5px; /*top right bottom left */
-      border-radius: 5px; 
-      -moz-border-radius: 10px; 
-      -webkit-border-radius: 10px; 
+      margin: 6px 5px 0px 2px; /*top right bottom left */
+      border-radius: 3px; 
       background-color: #FFFFFF;
 
     }
@@ -148,13 +154,54 @@ h3 {
       width: 40px;
       height: auto;
     }
-
+    #load_more{
+      background-color: #E1F5F5;
+      color: #FFFFFF;
+    }
 
     /*Third Pane: Metrics*/
     #metricsPane {
-      border-radius: 0px 15px 15px 0px; /*TL TR BR BL*/
-      margin: 0px 5px 0px 0px; /*top right bottom left */
-      background-color: #E1F5F5;
+      border-radius: 0px 17px 15px 0px; /*TL TR BR BL*/
+      background-color: #91BBBB;
     }
 
+
+   /*SEARCH AREA AT TOP ON THIRD PANEL*/
+    #metricsPane .form-search {
+      padding: 10px 0px 0px 0px;
+      border-radius: 0px 15px 15px 0px;
+      height: 100px;
+      background-color: #E1F5F5;
+      margin: 0px -15px 0px -15px;
+    }
+
+   /*Search Bar*/
+   #metricsPane .input-medium {
+      width: 70%;
+      height: 30px;
+      border-radius: 20px;
+    }
+
+  /*Search click button*/
+   #metricsPane .btn {
+      border-radius: 40px;
+      background-color: #FFFFFF;
+      border: 0px;
+      height: 30px;
+      color: #FFFFFF;
+   } 
+
+
+#searchPane {
+  height: 800px;
+
+}
+
+#searchResult {
+  border-radius: 20px;
+  height: 90%;
+  background-color: #FFFFFF;
+  margin: 60px 5px 20px 5px;
+
+}
 
