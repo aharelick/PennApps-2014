@@ -65,7 +65,7 @@
       console.log(response);
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
-        htmlOut += "<div class = 'one_message'> <div class='avatar'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
       }
       $("#lots_of_messages").html(htmlOut);
     });
