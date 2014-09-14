@@ -28,36 +28,42 @@ body {
 /*Single main header*/
 .page-header {
   margin-left: 10px;
-  opacity: .50;  
 }
 
 h1 {
+  color: #ff814A;
   padding-left: 5px;
+  font-size: 38px;
+
 }
 /*the three sub headers*/
 h3 {
-  text-align: center;
+  text-align: left;
+  color: white; 
+  font-size: 30px;
+  margin-top: 7px;
 }
 
 
 /*Left Pane of Main page: Groups List*/
 
 #groupsList {
-    background-color: #FCFCFC;
-    border-radius: 5px;
+    background-color: #91BBBB;
+    border-radius: 15px;
     padding: 0px 5px 5px 5px; /*T R B L*/
 
 }
 
- /*Retrieve Groups button */
+ /*Refresh Groups button */
    input[type=submit] { 
+    float: right;
     text-align: center;
-    background-color: #DDDDE0;
-    border: #DDDDE0;
+    background-color: #FCFCFC;
+    border: #FCFCFC;
     border-radius: 15px;
-    padding: 5px 90px 5px; /*T R&L  B*/
-
-
+    padding: 5px 5px 5px; /*T R&L  B*/
+    margin: 0px 5px 5px 0px; /*top right bottom left */
+    width: 57px;
    }
 
 
@@ -66,19 +72,21 @@ h3 {
       -moz-border-radius: 6px; 
       -webkit-border-radius: 6px; 
       border: 0px solid #B1E0E0;
-      border-radius: 5px; /*TL TR BR BL*/
+      border-radius: 15px; /*TL TR BR BL*/
       margin: 10px 5px 10px 5px; /*top right bottom left */
       padding: 10px 29px 10px; /*T R&L  B*/
       text-align: left;
+      color: white;
 
     }
     
     .conversationBox:hover {
-      background-color: #DDDDE0;
+      background-color: #FFE3B7;
     }
 
     .active {
-      background-color: #E1F5F5 ;
+      background-color: #FCFCFC;
+      color: #91BBBB;
     }
 
     .form-signin-heading2 {
@@ -86,10 +94,12 @@ h3 {
       margin-bottom: 10px;
     }
     
+
+
     /*Second Pane: Messages Section*/
     #currConversation {
-      border-radius: 10px 0px 0px 0px; /*TL TR BR BL*/
-      margin: 10px 0px 0px 5px; /*top right bottom left */
+      border-radius: 15px 0px 0px 0px; /*TL TR BR BL*/
+      margin: 0px 0px 0px 5px; /*top right bottom left */
       background-color: #E1F5F5;
     }
 
@@ -97,13 +107,15 @@ h3 {
     #currConversation input {
       width: 350px;
       height: 30px;
-      border-radius: 5px;
+      border-radius: 10px;
     }
 
     #currConversation button {
-      background-color: #DDDDE0;
-      border: 3px solid #DDDDE0;
+      border-radius: 40px;
+      background-color: #FFA84A;
+      border: 0px;
       height: 30px;
+      color: #FCFCFC;
     }
 
 
@@ -114,11 +126,10 @@ h3 {
     .one_message {
       padding: 2px 10px 2px;
       margin: 6px 5px 0px 5px; /*top right bottom left */
-      border-radius: 10px; 
+      border-radius: 5px; 
       -moz-border-radius: 10px; 
       -webkit-border-radius: 10px; 
-      background-color: #F0FFFF;
-
+      background-color: #FCFCFC;
 
     }
 
@@ -141,8 +152,8 @@ h3 {
 
     /*Third Pane: Metrics*/
     #metricsPane {
-      border-radius: 0px 10px 10px 0px; /*TL TR BR BL*/
-      margin: 10px 5px 0px 0px; /*top right bottom left */
+      border-radius: 0px 15px 15px 0px; /*TL TR BR BL*/
+      margin: 0px 5px 0px 0px; /*top right bottom left */
       background-color: #E1F5F5;
     }
 
