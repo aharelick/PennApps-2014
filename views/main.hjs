@@ -16,6 +16,7 @@
       console.log(elements.length);
       if (elements != undefined) {
         var htmlOut = "";
+        activeGroup = elements[0].id;
         for (var i=0; i<elements.length; i++) {
           htmlOut += "<div class='conversationBox' id='" + elements[i].id + "'onClick='makeActive(" + elements[i].id + ")'>" + elements[i].conversationName + "</div>";
         }
@@ -75,17 +76,21 @@
         //Case 3: Image and text
         } else if (response[i].text != null && response[i].image != null) {
           htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><a href='" + response[i].image + "'><img width='150px' height='auto' src='" + response[i].image + "'></a><br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 4: Bad things happened.
         } else {
           console.log("Something went wrong with a message.");
         }
-
-
-        //Case 3: Image and text
       }
       $("#lots_of_messages").html(htmlOut);
     });
     return false;
   }
+
+  window.onload = function() {
+    retrieveGroups();
+    setTimeout(function(){retrieveMessages()}, 750);
+  }
+
 </script>
 
 </head>
@@ -103,7 +108,7 @@
                 <center>
 
                 <form action="" method="" onSubmit="return false">
-                  <input type="submit" value="Retrieve Groups" onClick="retrieveGroups()"><br>
+                  <input type="submit" value="Refresh Groups" onClick="retrieveGroups()"><br>
                   <div id="content"></div>
                 </form>
               </center>
