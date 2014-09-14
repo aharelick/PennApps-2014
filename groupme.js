@@ -2,6 +2,7 @@ var request = require('request');
 var express = require('express');
 var nodeUuid = require("node-uuid");
 var validator = require("validator");
+var async = require("async");
 var router = express.Router();
 
 var base = 'http://localhost:3000/'
@@ -139,12 +140,15 @@ router.get('/search', function(req, res) {
   var param = req.query.param;
   var group_id = req.query.group_id;
   sendData = [];
-  req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}, function(err, cursor) {
-    cursor.each(function(err, item) {
-      sendData.push(item);
+  req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}).toArray(function(err, items) {
+    async.each(items, function(item, callback) {
+      sendData.push(JSON.stringify(item));
+      callback();
+    }, function(err) {
+          return res.json(sendData);
+
     });
   });
-  return res.json(sendData);
 });
 
 module.exports = router;
