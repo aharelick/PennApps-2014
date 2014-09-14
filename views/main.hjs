@@ -189,7 +189,7 @@
                 <!--Metrics and search engine-->
                 <div id='searchPane'>
                 <form class="form-search">
-                    <input id="search_term" class="input-medium search-query" type="text" placeholder="Search Messages" onKeyUp="updateSearch()">
+                    <input id="search_term" class="input-medium search-query" type="text" placeholder="Search messages within group" onKeyUp="updateSearch()">
                 </form>
                       <div id='searchResult'> <!--Can you load each result in here, please?--> </div>
                 </div>
