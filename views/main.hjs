@@ -64,7 +64,7 @@
     var id = activeGroup;
     $.get('http://localhost:3000/groupme/messages?group_id=' + id, function(response) {
       console.log(response);
-      lastMessage = response[response.length-1].id;
+      lastMessage = response[response.length-1].message_id;
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
 
@@ -93,7 +93,7 @@
     var last_message = lastMessage;
     $.get('http://localhost:3000/groupme/moremessages?group_id=' + group_id + '&last_message=' + last_message, function(response) {
       if (response.length == 0) return false;
-      lastMessage = response[response.length-1].id;
+      lastMessage = response[response.length-1].message_id;
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
 
@@ -122,7 +122,13 @@
     var group_id = activeGroup;
     console.log(param);
     $.get('http://localhost:3000/groupme/search?group_id=' + group_id + '&param=' + param, function(response) {
-      console.log(response);
+      var htmlOut = "";
+      for (var i = 0; i < response.length; i++) {
+        console.log($.parseJSON(response[i]).name);
+        htmlOut += "<div class = 'one_response'> <div class='avatar-box'><img class='avatar' src='" + $.parseJSON(response[i]).pic + "'></div> <strong>" + $.parseJSON(response[i]).name + ": </strong>" + $.parseJSON(response[i]).text + "<br><div align='right'><em>" + $.parseJSON(response[i]).like_count + " favorites</em></div></div>";
+      }
+
+      $('#searchResult').html(htmlOut);
     });
   }
 
