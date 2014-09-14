@@ -99,6 +99,29 @@ router.get('/messages', function(req, res) {
       // strip html tags maybe
       var text = validator.escape(curr.text);
       sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
+       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id});
+    }  
+    return res.json(sendData); 
+  });
+});
+
+router.get('/moremessages', function(req, res) {
+  var group_id = req.query.group_id;
+  var last_message = req.query.last_message;
+  request.get({
+    url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100",
+  }, function(err, response, body) {
+    var data = (JSON.parse(body)).response;
+    sendData = [];
+    for (var i in data.messages) {
+      var curr = data.messages[i];
+      var image = null;
+      if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
+        image = curr.attachments[0].url;
+      }
+      // strip html tags maybe
+      var text = validator.escape(curr.text);
+      sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
        like_count: (curr.favorited_by).length, image: image});
     }  
     return res.json(sendData); 
