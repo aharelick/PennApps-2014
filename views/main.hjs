@@ -65,7 +65,22 @@
       console.log(response);
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
-        htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+
+        //Case 1: Just text
+        if (response[i].text != null && response[i].image == null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 2: Just image
+        } else if (response[i].text == null && response[i].image != null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong><br><a href='" + response[i].image + "'><img width='150px' height='auto' src='" + response[i].image + "'></a><br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        //Case 3: Image and text
+        } else if (response[i].text != null && response[i].image != null) {
+          htmlOut += "<div class = 'one_message'> <div class='avatar-box'><img class='avatar' src='" + response[i].pic + "'></div> <strong>" + response[i].name + ": </strong>" + response[i].text + "<br><a href='" + response[i].image + "'><img width='150px' height='auto' src='" + response[i].image + "'></a><br><div align='right'><em>" + response[i].like_count + " favorites</em></div></div>";
+        } else {
+          console.log("Something went wrong with a message.");
+        }
+
+
+        //Case 3: Image and text
       }
       $("#lots_of_messages").html(htmlOut);
     });
