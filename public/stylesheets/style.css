@@ -31,11 +31,18 @@ body {
 }
 
 h1 {
-  background-color: #FF811F;
+  /*background-color: #FF811F;*/
   color: #FFFFFF;
   padding: 30px 5px 10px 15px;
   font-size: 38px;
   margin-left: -10px;
+
+  background: -webkit-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* W3C */
+        
 }
 /*the three sub headers*/
 h3 {
@@ -156,21 +163,21 @@ h3 {
     }
     #load_more{
       background-color: #E1F5F5;
-      color: #FFFFFF;
+      color: #FF811F;
     }
 
     /*Third Pane: Metrics*/
     #metricsPane {
       border-radius: 0px 17px 15px 0px; /*TL TR BR BL*/
       background-color: #91BBBB;
+      padding-bottom: 20px;
     }
 
 
    /*SEARCH AREA AT TOP ON THIRD PANEL*/
     #metricsPane .form-search {
-      padding: 10px 0px 0px 0px;
+      padding: 10px 0px 10px 0px;
       border-radius: 0px 15px 15px 0px;
-      height: 100px;
       background-color: #E1F5F5;
       margin: 0px -15px 0px -15px;
     }
@@ -201,7 +208,7 @@ h3 {
   border-radius: 20px;
   height: 90%;
   background-color: #FFFFFF;
-  margin: 60px 5px 20px 5px;
+  margin: 20px 5px 20px 5px;
 
 }
 
