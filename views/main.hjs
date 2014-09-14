@@ -125,7 +125,7 @@
       var htmlOut = "";
       for (var i = 0; i < response.length; i++) {
         console.log($.parseJSON(response[i]).name);
-        htmlOut += "<div class = 'one_response'> <div class='avatar-box'><img class='avatar' src='" + $.parseJSON(response[i]).pic + "'></div> <strong>" + $.parseJSON(response[i]).name + ": </strong>" + $.parseJSON(response[i]).text + "<br><div align='right'><em>" + $.parseJSON(response[i]).like_count + " favorites</em></div></div>";
+        htmlOut += "<div class = 'one_result'> <div class='avatar-box'><img class='avatar' src='" + $.parseJSON(response[i]).pic + "'></div> <strong>" + $.parseJSON(response[i]).name + ": </strong>" + $.parseJSON(response[i]).text + "<br><div align='right'><em>" + $.parseJSON(response[i]).like_count + " favorites</em></div></div>";
       }
 
       $('#searchResult').html(htmlOut);
