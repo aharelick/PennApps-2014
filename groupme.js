@@ -122,7 +122,7 @@ router.get('/moremessages', function(req, res) {
       // strip html tags maybe
       var text = validator.escape(curr.text);
       sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
-       like_count: (curr.favorited_by).length, image: image});
+       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id});
     }  
     return res.json(sendData); 
   });
