@@ -124,6 +124,7 @@
     $.get('http://localhost:3000/groupme/messages?group_id=' + group_id + '&param=' + param, function(response) {
       console.log(response);
     });
+  }
 
   window.onload = function() {
     retrieveGroups();
