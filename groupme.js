@@ -53,9 +53,9 @@ router.get('/groups', function(req, res) {
     for (var i in data) {
       sendData.push({'conversationName' : data[i].name, 'id' : data[i].group_id});
     }  
-    req.db.collection('groups').insert(sendData, function(err, result) {
+    /*req.db.collection('groups').insert(sendData, function(err, result) {
       console.log("inserted successfully");
-    });  
+    });  */
     return res.json(sendData); 
   }); 
 });
@@ -96,12 +96,12 @@ router.get('/messages', function(req, res) {
       }
       // strip html tags maybe
       var text = validator.escape(curr.text);
-      sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
-       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id});
+      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id};
+      sendData.push(json);
+      req.db.collection('messages').insert(json, function(err, result) {
+        console.log("inserted messages successfully");
+      }); 
     }  
-    req.db.collection('messages').insert(sendData, function(err, result) {
-      console.log("inserted successfully");
-    }); 
     return res.json(sendData); 
   });
 });
@@ -125,12 +125,12 @@ router.get('/moremessages', function(req, res) {
       }
       // strip html tags maybe
       var text = validator.escape(curr.text);
-      sendData.push({'name' : curr.name, 'text': text, 'pic': curr.avatar_url,
-       'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id});
-    }
-    req.db.collection('messages').insert(sendData, function(err, result) {
-      console.log("inserted successfully");
-    });   
+      json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'id': curr.id, 'group_id':group_id};
+      sendData.push(json);
+      req.db.collection('messages').insert(json, function(err, result) {
+        console.log("inserted messages successfully");
+      });  
+    } 
     return res.json(sendData); 
   });
 });
@@ -138,7 +138,8 @@ router.get('/moremessages', function(req, res) {
 router.get('/search', function(req, res) {
   var param = req.query.param;
   var group_id = req.query.group_id;
-  return res.json(db.groups.find({conversationName:{$regex : ".*" + param + ".*"}}));
+  console.log(req.db.collection('messages').find({text:{$regex : ".*" + param + ".*"}}));
+  return res.json(null);
 });
 
 module.exports = router;
