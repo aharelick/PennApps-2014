@@ -4,7 +4,9 @@ body {
       padding-bottom: 40px;
       background-color: #FFFFFF;
     }
-
+#landing {
+  background-image: url("../img/bg.jpg");
+}
     .form-signin {
       max-width: 300px;
       padding: 19px 29px 29px;
