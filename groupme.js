@@ -114,6 +114,7 @@ router.get('/load', function(req, res) {
   var last_message = req.query.last_message;
   var group_id = req.query.group_id;
   var done = true;
+  message_count = 0;
   promiseWhile(function() {
     // Condition for stopping
     return done;
@@ -129,6 +130,7 @@ router.get('/load', function(req, res) {
             } else {
             var data = (JSON.parse(body)).response;
             for (var i in data.messages) {
+              message_count++;
               var curr = data.messages[i];
               var image = null;
               if (curr.attachments.length != 0 && curr.attachments[0].type == 'image') {
@@ -145,16 +147,16 @@ router.get('/load', function(req, res) {
               });
             }
           }
-        req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
-          console.log("loading into db");
-          resolve();   
-        });
+        console.log("loaded " + message_count + " messages into db");
+        resolve();   
       }); 
     });
   }).then(function() {
       // this will run after completion of the promiseWhile Promise!
+    req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
       console.log("successfully loaded")
-    res.json({'success' : true});
+      res.json({'success' : true});
+    });
   });
 });
 
@@ -185,9 +187,9 @@ router.get('/messages', function(req, res) {
           }
         });
       } 
-    req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
+    //req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
       return res.json(sendData);
-    });
+    //});
   });
 });
 
