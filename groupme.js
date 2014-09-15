@@ -179,7 +179,7 @@ router.get('/messages', function(req, res) {
         }
         // strip html tags maybe
         var text = validator.escape(curr.text);
-        json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
+        json = {'name' : curr.name, 'text': text, 'pic': (curr.avatar_url + ".avatar"),'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
         sendData.push(json);
         req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
           if (err) {
@@ -213,7 +213,7 @@ router.get('/moremessages', function(req, res) {
         }
         // strip html tags maybe
         var text = validator.escape(curr.text);
-        json = {'name' : curr.name, 'text': text, 'pic': curr.avatar_url,'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
+        json = {'name' : curr.name, 'text': text, 'pic': (curr.avatar_url + ".avatar"),'like_count': (curr.favorited_by).length, 'image': image, 'message_id': curr.id, 'group_id':group_id};
         sendData.push(json);
         req.db.collection('messages').update({message_id: json.message_id}, json, {upsert : true}, function(err, result) {
           if (err) {
