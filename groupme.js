@@ -124,7 +124,7 @@ router.get('/load', function(req, res) {
       request.get({
         url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100"
       }, function(err, response, body) {
-            if (response.statusCode == 304) {
+            if (response.statusCode == 304 || err || body == "Not Found") {
               done = false;
             } else {
             var data = (JSON.parse(body)).response;
@@ -145,11 +145,15 @@ router.get('/load', function(req, res) {
               });
             }
           }
-        resolve();   
+        req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
+          console.log("loading into db");
+          resolve();   
+        });
       }); 
     });
   }).then(function() {
       // this will run after completion of the promiseWhile Promise!
+      console.log("successfully loaded")
     res.json({'success' : true});
   });
 });
@@ -160,6 +164,9 @@ router.get('/messages', function(req, res) {
   request.get({
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&limit=100",
   }, function(err, response, body) {
+      if (err || body == "Not Found") {
+        return res.json([]);
+      }
       var data = (JSON.parse(body)).response;
       sendData = [];
       for (var i in data.messages) {
@@ -178,7 +185,9 @@ router.get('/messages', function(req, res) {
           }
         });
       } 
-    return res.json(sendData);
+    req.db.collection('messages').ensureIndex({ text: "text" }, function(err, result) {
+      return res.json(sendData);
+    });
   });
 });
 
@@ -189,7 +198,7 @@ router.get('/moremessages', function(req, res) {
   request.get({
     url: apiEndpoint + '/groups/' + group_id  + '/messages?token=' + req.session.groupme_token + "&before_id=" + last_message + "&limit=100"
   }, function(err, response, body) {
-      if (response.statusCode == 304) {
+      if (response.statusCode == 304 || err || body == "Not Found") {
         return res.json([]);
       }
       var data = (JSON.parse(body)).response;
