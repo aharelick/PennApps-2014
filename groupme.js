@@ -35,7 +35,10 @@ router.get('/authorize', function(req, res) {
 router.get('/success', function(req, res) {
   req.session.groupme_token = req.query.access_token;
   request.get({
-    url: apiEndpoint + '/users/me' + '?token=' + req.session.groupme_token
+    url: apiEndpoint + '/users/me',
+    qs: {
+      token: req.session.groupme_token
+    }
   }, function(err, response, body) {
     if (err) {
       console.log(err);

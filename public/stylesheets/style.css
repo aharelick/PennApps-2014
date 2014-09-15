@@ -1,59 +1,62 @@
-
-
 body {
-      padding-bottom: 40px;
-      background-color: #FFFFFF;
-    }
-#landing {
-  background-image: url("../img/bg.jpg");
+    padding-bottom: 40px;
+    background-color: #FFFFFF;
 }
-    .form-signin {
-      max-width: 300px;
-      padding: 19px 29px 29px;
-      margin: 0 auto 20px;
-      background-color: #fff;
-      border: 1px solid #e5e5e5;                                                                           
-      -webkit-border-radius: 5px;
-         -moz-border-radius: 5px;
-              border-radius: 5px;
-      -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-         -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-              box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    }
 
-    .form-signin .form-signin-heading,
+#landing {
+    background-image: url("../img/bg.jpg");
+}
+
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.form-signin .form-signin-heading,
     .form-signin .checkbox {
-      margin-bottom: 10px;
-    }
+    margin-bottom: 10px;
+}
 
 
 /*Single main header*/
 .page-header {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 h1 {
   /*background-color: #FF811F;*/
-  color: #FFFFFF;
-  padding: 30px 5px 10px 15px;
-  font-size: 38px;
-  margin-left: -10px;
-
-  background: -webkit-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #FF811F 10%, #FFB770 90%); /* W3C */
-        
+    color: #FFFFFF;
+    padding: 30px 5px 10px 15px;
+    font-size: 38px;
+    margin-left: -10px;
+    background: -webkit-linear-gradient(90deg, #FF811F 10%, #FFB770 90%);
+ /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(90deg, #FF811F 10%, #FFB770 90%);
+ /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #FF811F 10%, #FFB770 90%);
+ /* IE10 */
+    background: -o-linear-gradient(90deg, #FF811F 10%, #FFB770 90%);
+ /* Opera 11.10+ */
+    background: linear-gradient(90deg, #FF811F 10%, #FFB770 90%);
+ /* W3C */;
 }
 /*the three sub headers*/
 h3 {
-  float: left;
-  text-align: left;
-  color: white; 
-  font-size: 30px;
-  margin-top: 7px;
-  margin-left: 5px;
+    float: left;
+    text-align: left;
+    color: white;
+    font-size: 30px;
+    margin-top: 7px;
+    margin-left: 5px;
 }
 
 
@@ -62,161 +65,166 @@ h3 {
 #groupsList {
     background-color: #91BBBB;
     border-radius: 15px;
-    padding: 0px 5px 5px 5px; /*T R B L*/
+    padding: 0px 5px 5px 5px;
+ /*T R B L*/
     margin-right: 10px;
 }
 
 #groupsList #content {
-  padding: 20px 0px 10px 0px; 
+    padding: 20px 0px 10px 0px;
 }
 
  /*Refresh Groups button */
-   input[type=submit] { 
+input[type=submit] {
     float: right;
     text-align: center;
     background-color: #FFFFFF;
     border: #FFFFFF;
     border-radius: 15px;
-    padding: 0px 5px 0px; /*T R&L  B*/
-    margin: 20px 5px 5px 0px; /*top right bottom left */
+    padding: 0px 5px 0px;
+ /*T R&L  B*/
+    margin: 20px 5px 5px 0px;
+ /*top right bottom left */
     width: 57px;
     color: #91BBBB;
-   }
+}
 
 
 /*The list of conversations*/
-    .conversationBox {
-      -moz-border-radius: 6px; 
-      -webkit-border-radius: 6px; 
-      border: 0px solid #B1E0E0;
-      border-radius: 15px; /*TL TR BR BL*/
-      margin: 10px 5px 10px 5px; /*top right bottom left */
-      padding: 10px 29px 10px; /*T R&L  B*/
-      text-align: left;
-      color: white;
+.conversationBox {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 0px solid #B1E0E0;
+    border-radius: 15px;
+ /*TL TR BR BL*/
+    margin: 10px 5px 10px 5px;
+ /*top right bottom left */
+    padding: 10px 29px 10px;
+ /*T R&L  B*/
+    text-align: left;
+    color: white;
+}
 
-    }
-    
-    .conversationBox:hover {
-      background-color: #FFE3B7;
-    }
+.conversationBox:hover {
+    background-color: #FFE3B7;
+}
 
-    .active {
-      background-color: #FCFCFC;
-      color: #91BBBB;
-    }
+.active {
+    background-color: #FCFCFC;
+    color: #91BBBB;
+}
 
-    .form-signin-heading2 {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+.form-signin-heading2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
     
 
 
     /*Second Pane: Messages Section*/
-    #currConversation {
-      border-radius: 15px 0px 15px 15px; /*TL TR BR BL*/
-      margin: 0px 0px 0px 5px; /*top right bottom left */
-      background-color: #E1F5F5;
-    }
+#currConversation {
+    border-radius: 15px 0px 15px 15px;
+ /*TL TR BR BL*/
+    margin: 0px 0px 0px 5px;
+ /*top right bottom left */
+    background-color: #E1F5F5;
+}
 
     /*text input box*/
-    #currConversation input {
-      padding-left: 10px;
-      width: 85%;
-      height: 30px;
-      border-radius: 20px;
-      margin-top: 10px;
-    }
+#currConversation input {
+    padding-left: 10px;
+    width: 85%;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
 
-    #send-message {
-      border-radius: 40px;
-      background-color: #FF811F;
-      border: 0px;
-      height: 30px;
-      color: #FFFFFF;
-    }
+#send-message {
+    border-radius: 40px;
+    background-color: #FF811F;
+    border: 0px;
+    height: 30px;
+    color: #FFFFFF;
+}
 
+#lots-of-messages {
+    padding: 2px 10px 2px;
+}
 
-    #lots-of-messages {
-      padding: 2px 10px 2px;
-    }
-
-    .one_message {
-      padding: 2px 10px 2px;
-      margin: 6px 5px 0px 2px; /*top right bottom left */
-      border-radius: 3px; 
-      background-color: #FFFFFF;
-      vertical-align: center;
-
-    }
+.one_message {
+    padding: 2px 10px 2px;
+    margin: 6px 5px 0px 2px;
+ /*top right bottom left */
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    vertical-align: center;
+}
 
     /*Users Profile Picture*/
-    .avatar-box { 
-      float: left;
-      width: 40px;
-      height: 40px;
-      overflow: auto;
-      vertical-align: center;
+.avatar-box {
+    float: left;
+    width: 40px;
+    height: 40px;
+    overflow: auto;
+    vertical-align: center;
+}
 
-    }
+.avatar {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    max-width: 38px;
+    min-width: 38px;
+    vertical-align: center;
+}
 
-    .avatar{
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 3px;
-      max-width: 38px;
-      min-width: 38px;
-
-      vertical-align: center;
-    }
-
-
-    #load_more{
-      background-color: #E1F5F5;
-      color: #FF811F;
-    }
+#load_more {
+    background-color: #E1F5F5;
+    color: #FF811F;
+}
 
 
     /*Third Pane: Metrics*/
-    #metricsPane {
-      border-radius: 0px 17px 15px 0px; /*TL TR BR BL*/
-      background-color: #91BBBB;
-      padding-bottom: 20px;
-    }
+#metricsPane {
+    border-radius: 0px 17px 15px 0px;
+ /*TL TR BR BL*/
+    background-color: #91BBBB;
+    padding-bottom: 20px;
+}
 
 
    /*SEARCH AREA AT TOP ON THIRD PANEL*/
-    #metricsPane .form-search {
-      padding: 10px 0px 10px 0px;
-      border-radius: 0px 15px 15px 0px;
-      background-color: #E1F5F5;
-      margin: 0px -15px 0px -15px;
-    }
+#metricsPane .form-search {
+    padding: 10px 0px 10px 0px;
+    border-radius: 0px 15px 15px 0px;
+    background-color: #E1F5F5;
+    margin: 0px -15px 0px -15px;
+}
 
    /*Search Bar*/
-   #metricsPane .input-medium {
-      margin-left: 10px;
-      padding-left: 10px;
-      width: 90%;
-      height: 30px;
-      border-radius: 20px;
-    }
+#metricsPane .input-medium {
+    margin-left: 10px;
+    padding-left: 10px;
+    width: 90%;
+    height: 30px;
+    border-radius: 20px;
+}
 
 #searchPane {
-  height: 800px;
+    height: 800px;
 }
 
 #searchResult {
-  height: 750px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+    height: 750px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .one_result {
-      padding: 2px 5px 2px;
-      margin: 6px 5px 0px 2px; /*top right bottom left */
-      border-radius: 3px; 
-      background-color: #FFFFFF;
-      vertical-align: center;
-    }
+    padding: 2px 5px 2px;
+    margin: 6px 5px 0px 2px;
+ /*top right bottom left */
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    vertical-align: center;
+}
